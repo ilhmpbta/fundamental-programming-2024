@@ -1,0 +1,62 @@
+#include <stdio.h>
+#include <string.h>
+
+/*
+Generate a table that indicates the rainfall for the city of Plainview and compares the current year's rainfall for the city with the rainfall from the previous year. Display some summary statistics that will indicate both the annual rainfall for each year and the average monthly rainfall for each year. The input data will consist of 12 pairs of numbers. The first number in each pair will be the current year's rainfall for a month, and the second number will be what fell during the same month the previous year. The first data pair will represent January, the second will be February, and so forth. If you assume the data begin
+3.2     4     (for January)
+2.2     1.6   (for February)
+the output should resemble the following:
+                Table of monthly rainfall
+                  January    February    March . . .
+This year            3.2          2.2
+Last year            4.0          1.6
+Total rainfall this year:    35.7
+Total rainfall last year:    42.8
+Average monthly rainfall for this year:   3.6
+Average monthly rainfall for last year:   4.0
+*/
+
+int main(){
+    float average[2];
+    float monthly_rainfall[12][2];
+    for(int i = 0; i < 12; i++){
+        for (int j = 0; j < 2; j++){
+            scanf("%f", &monthly_rainfall[i][j]);
+            average[j] += monthly_rainfall[i][j];
+        }
+    }
+
+    char month[12][20];
+    strcpy(month[0], "Jan");    // easier to use in loop than assigning individually
+    strcpy(month[1], "Feb");
+    strcpy(month[2], "Mar");
+    strcpy(month[3], "Apr");
+    strcpy(month[4], "May");
+    strcpy(month[5], "Jun");
+    strcpy(month[6], "Jul");
+    strcpy(month[7], "Aug");
+    strcpy(month[8], "Sept");
+    strcpy(month[9], "Oct");
+    strcpy(month[10], "Nov");
+    strcpy(month[11], "Dec");
+
+    printf("\tTable of monthly rainfall\n");
+    printf("Month\tThis year\tLast year\n");
+    
+    for(int i = 0; i < 12; i++){
+        printf("%s\t%.1f\t\t%.1f\n", month[i], monthly_rainfall[i][0], monthly_rainfall[i][1]);
+    }
+
+    printf("\n");
+
+    printf("Total rainfall this year:  %.2f\n", average[0]);
+    printf("Total rainfall last year:  %.1f\n", average[1]);
+
+    average[0] /= 12;
+    average[1] /= 12;
+
+    printf("Average monthly rainfall for this year:  %.1f\n", average[0]);
+    printf("Average monthly rainfall for last year:  %.1f\n", average[1]);
+
+    return 0;
+}

@@ -145,18 +145,13 @@ int main(){
             display2_pt(&x1, &y1, &x2, &y2);
             display_slope_intcpt(&slope, &intcpt);
             printf("\nDo another conversion (Y or N) ==> ");
-        }
-        else if (input == 2){
+        } else if (input == 2){
             get_pt_slope(&slope, &x1, &x2);
             intcpt_from_pt_slope(&slope, &x1, &x2, &intcpt);
             // printf("%.2lf %.2lf", slope, intcpt);
             display_pt_slope(&slope, &x1, &x2, &intcpt);
             display_slope_intcpt(&slope, &intcpt);
             printf("\nDo another conversion (Y or N) ==> ");
-        }
-        
-        while(getchar() != '\n');
-
-        scanf("%c", &repeat);
+        } while(getchar() != '\n'); scanf("%c", &repeat);
     } while (repeat == 'Y');
 }
